@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf获取作用域</title>
+</head>
+<body>
+request:<span th:text="${#httpServletRequest.getAttribute('request')}"></span><br>
+session:<span th:text="${session.session}"></span><br>
+application:<span th:text="${application.application}"></span>
+</body>
+</html>

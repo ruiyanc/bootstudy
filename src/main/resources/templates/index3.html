@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>foreach遍历</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>key</th>
+        <th>id</th>
+        <th>username</th>
+        <th>password</th>
+    </tr>
+    <tr th:each="maps : ${map}">
+        <td th:each="entry:${maps}" th:text="${entry.key}"></td>
+        <td th:each="entry:${maps}" th:text="${entry.value.id}"></td>
+        <td th:each="entry:${maps}" th:text="${entry.value.username}"></td>
+        <td th:each="entry:${maps}" th:text="${entry.value.password}"></td>
+    </tr>
+</table>
+</body>
+</html>

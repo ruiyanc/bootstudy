@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>Thymeleaf入门</title>
+</head>
+<body>
+<span th:text="hello"></span>
+<hr>
+<span th:text="${msg}"></span>
+<span th:text="${#strings.isEmpty(msg)}"></span>
+<hr>
+<input type="text" name="username" th:value="${msg}">
+<hr>
+<span th:text="${#dates.format(date)}"></span>
+<span th:if="${sex} == '男'">
+    性别:男
+</span>
+<span th:if="${sex} == '女'">
+    性别:女
+</span>
+<br>
+<a th:href="@{http://www.baidu.com}">百度</a>
+<a th:href="@{/quick}">返回</a>
+</body>
+</html>

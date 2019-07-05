@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="UTF-8">
+    <title>foreach遍历</title>
+</head>
+<body>
+<table border="1">
+    <tr>
+        <th>id</th>
+        <th>username</th>
+        <th>password</th>
+        <th>index</th>
+        <th>count</th>
+        <th>size</th>
+        <th>even</th>
+        <th>odd</th>
+    </tr>
+    <tr th:each="u,var : ${list}">
+        <td th:text="${u.id}"></td>
+        <td th:text="${u.username}"></td>
+        <td th:text="${u.password}"></td>
+        <td th:text="${var.index}"></td>
+        <td th:text="${var.count}"></td>
+        <td th:text="${var.size}"></td>
+        <td th:text="${var.even}"></td>
+        <td th:text="${var.odd}"></td>
+        <td th:text="${var.first}"></td>
+        <td th:text="${var.last}"></td>
+    </tr>
+</table>
+</body>
+</html>

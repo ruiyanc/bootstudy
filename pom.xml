@@ -82,6 +82,7 @@
 <!--      <artifactId>shiro-spring-boot-web-starter</artifactId>-->
 <!--      <version>1.4.1</version>-->
 <!--    </dependency>-->
+<!--    thymeleaf启动器-->
       <dependency>
           <groupId>org.springframework.boot</groupId>
           <artifactId>spring-boot-starter-thymeleaf</artifactId>

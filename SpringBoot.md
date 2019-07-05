@@ -1,5 +1,5 @@
 #SpringBoot
-* 基于约定,大多默认
+* 基于约定,大多默认(`约定大于配置`)
 * 起步依赖,自动配置
     * <parent>:坐标版本控制
 * @SpringBootApplication:声明springboot引导类
@@ -18,4 +18,36 @@
 * 文件上传
     * @RestController:该类下方法返回值会自动做json格式转换
 * 整合Thymeleaf
-    * 
+    * 特点:对html标记渲染
+    * 调用内置对象用\#,大部分以s结尾
+    * 语法 ${}
+        * th:text : 页面输出值text内容
+        * th:value : 将值放入到input标签的value中
+        * \#strings.isEmpty(key) : 判断字符串是否为空.
+            * contains(key,"T"):是否包含指定的字符串,length:返回字符串长度
+            * startsWith():是否以指定字符串开头,endsWith:结尾
+            * indexOf():查找字符串的位置,substring():截取字符串
+            * toUpperCase():字符串全部大写,toLowerCase():小写
+        * \#dates.format(key): 格式化日期,
+            * year:年,month:月,day:日
+        * th:if : 条件判断 `"${sex} == '男''"`
+        * th:swith和th:case : 判断
+        * th:each : foreach遍历 
+            * 遍历list : `"list,var : ${lists}"`
+                * var:状态变量 
+                    * index:索引,count:计数,size:被迭代对象长度
+                    * odd/even:奇数/偶,first/last:是否为头/尾
+            * 遍历map : `"maps : ${map}" th:each="?:${maps}" th:text="${?.key}"`
+                * 先遍历map对象,再遍历key,value,取value值(?.value.属性名)
+        * 域对象取值操作:
+            * \#httpServletRequest.getAttribute('key'):取request对象值
+            * session.key:取session对象值
+            * application.key:取ServletContext对象值
+    * URL表达式: th:href="@{}"
+        * 绝对路径不变
+        * 相对路径:
+            * 相对于项目上下文的: @{/show}
+            * 相对于服务器的根路径: @{~/..resources}
+        * url中参数传递
+            * @{/show(id=1,name=1)}传参 <=> show?id=1&name=1
+            * restful风格传参: @{/path/{id}/show(id=1)}

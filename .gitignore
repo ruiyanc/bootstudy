@@ -97,3 +97,5 @@ fabric.properties
 .idea
 boot.iml
 target/
+src/main/java/rui/service/
+src/main/webapp/WEB-INF/views/

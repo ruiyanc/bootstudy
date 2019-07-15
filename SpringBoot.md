@@ -2,10 +2,14 @@
 * 基于约定,大多默认(`约定大于配置`)
 * 起步依赖,自动配置
     * <parent>:坐标版本控制
-* @SpringBootApplication:声明springboot引导类
+* @SpringBootApplication:声明springboot引导类(等价于下面两个注解)
+    * @EnableAutoConfiguration:开启自动化配置,@ComponentScan:进行包扫描
     * SpringApplication.run():运行引导类,run参数是引导类的字节码对象
-* application.yml配置文件
+* application.yml配置文件(不支持@PropertySource加载)
     * 语法:key:value
+    * 注入bean,@Component和@ComfigurationProperties(prefix="名")
+* 分别创建-dev开发和-prod生成环境的配置
+    * 设置spring.profiles.active=dev
 * 获取配置文件的数据
     * @Value("${name}"):绑定字段
     * @ConfigurationProperties():绑定对象数据,需setget方法
@@ -51,3 +55,9 @@
         * url中参数传递
             * @{/show(id=1,name=1)}传参 <=> show?id=1&name=1
             * restful风格传参: @{/path/{id}/show(id=1)}
+* 服务端表单数据校验
+    * @NotBlank:判断字符串是否为null或空字符串(不能通过)
+    * @NotEmpty:同上,(可以通过校验)
+    * @Length:判断字符串的长度
+    * @Min:判断数值最小值,@Max:最大值
+    * @Email:判断邮箱是否合法

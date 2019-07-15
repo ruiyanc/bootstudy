@@ -5,6 +5,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.servlet.ModelAndView;
 import rui.model.Book;
+import rui.model.User;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -41,5 +42,11 @@ public class BookController {
         book.setPrice(30f);
         book.setPublicationDate(new Date());
         return book;
+    }
+
+    @GetMapping("testjson")
+    @ResponseBody
+    private Object testjson() {
+        return new User(111, "zhangsan", "123");
     }
 }

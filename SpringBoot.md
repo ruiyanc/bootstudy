@@ -13,6 +13,11 @@
 * 获取配置文件的数据
     * @Value("${name}"):绑定字段
     * @ConfigurationProperties():绑定对象数据,需setget方法
+* 基础语法:
+    * @PathVariable:接收参数名并转成目标参数名
+    * @GetMapping=@RequestMapping(method=GET)
+    * JSON数据处理
+        * 
 * 整合mybatis
     * application.properties加入数据库信息
     * 别名扫描包:mybatis.type-aliases-package=rui.model

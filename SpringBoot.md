@@ -12,12 +12,16 @@
     * 设置spring.profiles.active=dev
 * 获取配置文件的数据
     * @Value("${name}"):绑定字段
+    * @PropertySource:指定配置文件位置
     * @ConfigurationProperties():绑定对象数据,需setget方法
 * 基础语法:
     * @PathVariable:接收参数名并转成目标参数名
     * @GetMapping=@RequestMapping(method=GET)
     * JSON数据处理
-        * 
+        * @JsonIgnore:忽略
+        * @JsonProperty:指定别名
+        * @JsonInclude(Include.NON_NULL):空字段不返回
+        * @JsonFormat(pattern = "yyyy-MM-dd"):日期格式化
 * 整合mybatis
     * application.properties加入数据库信息
     * 别名扫描包:mybatis.type-aliases-package=rui.model
@@ -25,7 +29,15 @@
 * 整合Servlet
     * @ServletComponentScan:启动时扫描@WebServlet并实例化
 * 文件上传
+    * 默认采用StandardServletMultipartResolver组件
     * @RestController:该类下方法返回值会自动做json格式转换
+    * MultipartFile filename
+        * transferTo(file):上传
+        * getOriginalFilename():获取文件名
+* 全局异常处理
+    * @ControllerAdvice:
+        * 结合@ExceptionHandler定义全局捕获机制
+        * 使用@ModelAttribute:配置全局数据
 * 整合Thymeleaf
     * 特点:对html标记渲染
     * 调用内置对象用\#,大部分以s结尾
@@ -66,3 +78,9 @@
     * @Length:判断字符串的长度
     * @Min:判断数值最小值,@Max:最大值
     * @Email:判断邮箱是否合法
+* Filter和Interceptor的区别
+    * 基于回调函数doFilter();基于AOP思想
+    * 只在Servlet前后起作用;深入到方法前后、异常抛出前后
+    * 依赖于Servlet容器即web应用中;不依赖Servlet,可运行在多种环境
+    * 接口调用生命周期里,Filter只在容器初始化时调用一次,Interceptor可以被多次调用
+    * 执行顺序:过滤前->拦截前->控制器执行->拦截后->过滤后

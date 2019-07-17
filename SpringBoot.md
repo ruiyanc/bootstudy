@@ -49,6 +49,8 @@
     * MultipartFile filename
         * transferTo(file):上传
         * getOriginalFilename():获取文件名
+* 整合redis
+    * 
 * 整合Thymeleaf
     * 特点:对html标记渲染
     * 调用内置对象用\#,大部分以s结尾

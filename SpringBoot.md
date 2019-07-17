@@ -13,7 +13,7 @@
 * 获取配置文件的数据
     * @Value("${name}"):绑定字段
     * @PropertySource:指定配置文件位置
-    * @ConfigurationProperties():绑定对象数据,需setget方法
+    * @ConfigurationProperties():绑定对象数据,需SetGet方法
 * 基础语法:
     * @PathVariable:接收参数名并转成目标参数名
     * @GetMapping=@RequestMapping(method=GET)
@@ -22,6 +22,21 @@
         * @JsonProperty:指定别名
         * @JsonInclude(Include.NON_NULL):空字段不返回
         * @JsonFormat(pattern = "yyyy-MM-dd"):日期格式化
+* 全局异常处理
+    * @ControllerAdvice:
+        * 结合@ExceptionHandler定义全局捕获机制
+        * 使用@ModelAttribute:配置全局数据
+* 前端的跨域请求(CORS支持)
+    * @CrossOrigin(value=url,maxAge=1800,allowedHeaders="*")
+        * value:支持跨域的url,maxAge:探测请求的有效期,allowedHeaders:允许的请求头
+* 注册拦截器
+    * 创建拦截器实现HandlerInterceptor接口
+        * 方法顺序:preHandle->Controller->postHandle->afterCompletion
+    * 配置拦截器,继承WebMvcConfigurer接口
+        * addInterceptors:添加拦截器
+            * addPathPatterns:拦截路径,excludePathPatterns:排除的路径
+* 配置AOP(面向切面编程)
+    * @Aspect:切面类
 * 整合mybatis
     * application.properties加入数据库信息
     * 别名扫描包:mybatis.type-aliases-package=rui.model
@@ -34,10 +49,6 @@
     * MultipartFile filename
         * transferTo(file):上传
         * getOriginalFilename():获取文件名
-* 全局异常处理
-    * @ControllerAdvice:
-        * 结合@ExceptionHandler定义全局捕获机制
-        * 使用@ModelAttribute:配置全局数据
 * 整合Thymeleaf
     * 特点:对html标记渲染
     * 调用内置对象用\#,大部分以s结尾

@@ -1,8 +1,7 @@
 package rui.controller;
 
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 import rui.model.Book;
 import rui.model.User;
@@ -11,7 +10,8 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-@Controller
+@RestController
+@RequestMapping("book")
 public class BookController {
     @GetMapping("books")
     public ModelAndView books() {
@@ -48,5 +48,17 @@ public class BookController {
     @ResponseBody
     private Object testjson() {
         return new User(111, "zhangsan", "123");
+    }
+
+    @PostMapping("/")
+    @CrossOrigin(value = "http://localhost:8080",maxAge = 1800,allowedHeaders = "*")
+    public String addBook(String name) {
+        return "receive:" + name;
+    }
+
+    @DeleteMapping("/{id}")
+    @CrossOrigin(value = "http://localhost:8080",maxAge = 1800,allowedHeaders = "*")
+    public String deleteBookById(@PathVariable int id) {
+        return String.valueOf(id);
     }
 }
